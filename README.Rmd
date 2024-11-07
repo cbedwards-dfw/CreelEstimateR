@@ -60,6 +60,8 @@ may a single "control" function that is called, and which calls most/all the oth
 
 ### finalizing documentation:
 
+-
+
 ## Installation
 
 You can install the development version of CreelEstimateR from [GitHub](https://github.com/) with:

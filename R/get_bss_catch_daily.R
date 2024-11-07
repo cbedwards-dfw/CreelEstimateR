@@ -1,8 +1,6 @@
 #' Get bss daily catch
 #'
-#' @param bss_fit ??
-#' @param ecg ??
-#' @param ... ??
+#' @inheritParams get_bss_effort_daily
 #'
 #' @return ??
 #' @export

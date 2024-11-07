@@ -14,6 +14,7 @@ BugReports: https://github.com/cbedwards-dfw/CreelEstimateR/issues
 Imports: 
     DBI,
     dplyr,
+    ggplot2,
     jsonlite,
     purrr,
     readr,

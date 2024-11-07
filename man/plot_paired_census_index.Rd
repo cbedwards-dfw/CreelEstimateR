@@ -29,7 +29,7 @@ List. \verb{$plot} is ggplot object, \verb{$census_TI_expan} is ??
 \description{
 Pared down version of prep_inputs_pe_ang_hrs_vhcl_trlr.R function to return table with season-long
 sum of angler counts from paired census and index count surveys and scatter plot showing ratio of census
-to index counts relative to a 1:1 line in a scatterplot
+to index counts relative to a 1:1 line in a scatterplot.
 }
 \details{
 Dev notes: where is angler_hours_daily_mean defined?

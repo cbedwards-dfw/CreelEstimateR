@@ -50,6 +50,8 @@ which calls most/all the others?
 
 ### finalizing documentation:
 
+- 
+
 ## Installation
 
 You can install the development version of CreelEstimateR from

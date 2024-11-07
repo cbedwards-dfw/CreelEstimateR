@@ -17,7 +17,7 @@ Evan or colt: help!
 \description{
 Dev note: this function relies on \code{params}, which is not defined here. Consult with team.
 Dev note: use of \verb{<<-} assignment is problematic. Consult team.
-Dev note: relies on \code{analysis_lut}, which is not defined here. Consult team.
+Dev note: relies on \code{analysis_lut}, which is not defined here. Consult team. Update: rewrite to take that in.
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 #'
 #' Dev note: this function relies on `params`, which is not defined here. Consult with team.
 #' Dev note: use of `<<-` assignment is problematic. Consult team.
-#' Dev note: relies on `analysis_lut`, which is not defined here. Consult team.
+#' Dev note: relies on `analysis_lut`, which is not defined here. Consult team. Update: rewrite to take that in.
 #'
 #' @param type Character string; one of "script", "regulations", or "r_session". Evan or Colt: help!
 #' @param ... Evan or Colt: help! Looks like we have space for optional arguments, but unclear if they get used anywhehre.
@@ -91,6 +91,8 @@ json_conversion <- function(type, ...) {
       cat("\nJSON valid... adding `r_session_json` to analysis_lut.")
 
       #add to analysis look up table
+      ### This is the global environment assignment
+      ### Need to do a minor restructure to avoid the global envi.
       analysis_lut <<- analysis_lut |>  dplyr::mutate(r_session_json = r_session_json)
 
     } else {
