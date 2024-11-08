@@ -12,12 +12,11 @@
 #' @param days ??
 #' @param pe_inputs_list ??
 #' @param sections ??
-#' @param ... ??
 #'
 #' @return ??
 #' @export
 
-est_pe_effort <- function(days, pe_inputs_list, sections, ...) {
+est_pe_effort <- function(days, pe_inputs_list, sections) {
   est_effort <-
     dplyr::left_join(
       #dates expanded to sections * angler_final * opendays

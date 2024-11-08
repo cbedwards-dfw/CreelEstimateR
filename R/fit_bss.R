@@ -32,7 +32,7 @@ fit_bss <- function(
   init = "0",
   ...){
 
-  stan(
+  rstan::stan(
     file = model_file_name,
     data = bss_inputs_list,
     chains = n_chain,

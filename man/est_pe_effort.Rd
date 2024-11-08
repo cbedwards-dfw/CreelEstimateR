@@ -4,7 +4,7 @@
 \alias{est_pe_effort}
 \title{Calculate mean and variance for section_num-period-day_type-angler_final}
 \usage{
-est_pe_effort(days, pe_inputs_list, sections, ...)
+est_pe_effort(days, pe_inputs_list, sections)
 }
 \arguments{
 \item{days}{??}
@@ -12,8 +12,6 @@ est_pe_effort(days, pe_inputs_list, sections, ...)
 \item{pe_inputs_list}{??}
 
 \item{sections}{??}
-
-\item{...}{??}
 }
 \value{
 ??

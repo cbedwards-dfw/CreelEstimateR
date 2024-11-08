@@ -2,19 +2,18 @@
 #'
 #' @param bss_fit ??
 #' @param ecg ??
-#' @param ... ??
 #'
 #' @return ??
 #' @export
 #'
-get_bss_overview <- function(bss_fit, ecg, ...){
+get_bss_overview <- function(bss_fit, ecg){
   bss_fit |>
     summary(pars = c("E_sum", "C_sum")) |>
     purr::pluck("summary") |>
     as.data.frame() |>
     tibble::rownames_to_column("estimate") |>
     tibble::as_tibble() |>
-    bind_cols(
+    dplyr::bind_cols(
       bss_fit |>
         rstan::get_sampler_params(inc_warmup = FALSE) |> #list of matrices rows-iterations by 6 measures
         rlang::set_names(~paste0("n_div_",1:length(bss_fit@stan_args))) |>

@@ -8,8 +8,7 @@ plot_paired_census_index(
   days,
   dwg_summarized,
   interview_ang_per_vehic,
-  census_expan,
-  ...
+  census_expan
 )
 }
 \arguments{
@@ -20,8 +19,6 @@ plot_paired_census_index(
 \item{interview_ang_per_vehic}{??}
 
 \item{census_expan}{??}
-
-\item{...}{??}
 }
 \value{
 List. \verb{$plot} is ggplot object, \verb{$census_TI_expan} is ??

@@ -18,6 +18,7 @@ Imports:
     jsonlite,
     purrr,
     readr,
+    rlang,
     RPostgres,
     rstan,
     rstudioapi,
@@ -26,6 +27,7 @@ Imports:
     stringr,
     tibble,
     tidyr,
+    tidyselect,
     utils,
     uuid,
     yaml

@@ -10,7 +10,6 @@
 #' @param dwg_summarized ??
 #' @param interview_ang_per_vehic ??
 #' @param census_expan ??
-#' @param ... ??
 #'
 #' @return List. `$plot` is ggplot object, `$census_TI_expan` is ??
 #' @export
@@ -19,8 +18,7 @@ plot_paired_census_index <- function(
     days,
     dwg_summarized,
     interview_ang_per_vehic,
-    census_expan,
-    ...
+    census_expan
 ){
 
   eff_ind <- dplyr::left_join(
@@ -37,7 +35,7 @@ plot_paired_census_index <- function(
     )
 
   if(nrow(dwg_summarized$effort_census) == 0) {
-    census_TI_expan <- expand_grid(
+    census_TI_expan <- tidyr::expand_grid(
       section_num = unique(angler_hours_daily_mean$section_num),
       angler_final = unique(angler_hours_daily_mean$angler_final),
       TI_expan_final = 1)
@@ -46,13 +44,13 @@ plot_paired_census_index <- function(
     census_TI_expan <- dplyr::left_join(
       #census already grouped & summed by event_date, section_num, tie_in_indicator, count_sequence, and angler_final [bank, boat]
       #but as for interview above, first split and collapse to reassign angler_final as total & boat
-      bind_rows(
+      dplyr::bind_rows(
         dwg_summarized$effort_census |>
           dplyr::group_by("section_num", "event_date", "count_sequence") |>
           dplyr::summarize(angler_final = "total", count_census = sum(.data$count_census),  .groups = "drop")
         ,
         dwg_summarized$effort_census |>
-          dplyr::filter(angler_final == "boat") |>
+          dplyr::filter(.data$angler_final == "boat") |>
           dplyr::group_by("section_num", "event_date", "count_sequence") |>
           dplyr::summarize(angler_final = "boat", count_census = sum(.data$count_census), .groups = "drop")
       ),
@@ -79,7 +77,7 @@ plot_paired_census_index <- function(
       ,
       by = c("section_num", "event_date", "count_sequence", "angler_final")
     ) |>
-      tidyr::drop_na(count_index)
+      tidyr::drop_na(.data$count_index)
 
     #now overwrite, coercing angler_final back to bank/boat as above for pe_estimates$angler_hours_daily_mean
     #again dropping NAs and negatives as invalid for inferring estimates
@@ -151,13 +149,13 @@ plot_paired_census_index <- function(
   if(params$census_expansion == "Direct") {
 
     plot <-  census_TI_expan |>
-      ggplot(aes(.data$count_index, .data$count_census, color = .data$angler_final)) +
-      geom_abline(slope = 1, intercept = 0, linetype = 2) +
-      scale_x_continuous(limits = c(0, NA)) +
-      scale_y_continuous(limits = c(0, NA)) +
-      geom_point() +
-      geom_smooth(method = "lm", se = FALSE) +
-      facet_wrap(~paste("Section:",.data$section_num), labeller = label_wrap_gen(multi_line = F))
+      ggplot2::ggplot(ggplot2::aes(.data$count_index, .data$count_census, color = .data$angler_final)) +
+      ggplot2::geom_abline(slope = 1, intercept = 0, linetype = 2) +
+      ggplot2::scale_x_continuous(limits = c(0, NA)) +
+      ggplot2::scale_y_continuous(limits = c(0, NA)) +
+      ggplot2::geom_point() +
+      ggplot2::geom_smooth(method = "lm", se = FALSE) +
+      ggplot2::facet_wrap(~paste("Section:",.data$section_num), labeller = ggplot2::label_wrap_gen(multi_line = F))
 
     return(list(plot,census_TI_expan))
   }

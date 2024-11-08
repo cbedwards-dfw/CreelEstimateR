@@ -4,14 +4,12 @@
 \alias{get_bss_cpue_daily}
 \title{get daily bss cpue}
 \usage{
-get_bss_cpue_daily(bss_fit, ecg, ...)
+get_bss_cpue_daily(bss_fit, ecg)
 }
 \arguments{
 \item{bss_fit}{??}
 
 \item{ecg}{??}
-
-\item{...}{??}
 }
 \value{
 ??

@@ -4,14 +4,12 @@
 \alias{get_bss_overview}
 \title{get bss overview}
 \usage{
-get_bss_overview(bss_fit, ecg, ...)
+get_bss_overview(bss_fit, ecg)
 }
 \arguments{
 \item{bss_fit}{??}
 
 \item{ecg}{??}
-
-\item{...}{??}
 }
 \value{
 ??

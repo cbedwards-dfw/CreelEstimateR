@@ -1,13 +1,14 @@
 #' Get bss effort
 #'
+#' Dev note: needs dwg as argument
+#'
 #' @param bss_fit ??
 #' @param ecg ??
-#' @param ... ??
 #'
 #' @return ??
 #' @export
 #'
-get_bss_effort_daily <- function(bss_fit, ecg, ...){
+get_bss_effort_daily <- function(bss_fit, ecg){
   bss_fit |>
     summary(pars = c("E")) |>
     purrr::pluck("summary") |> #only want the combined-chains version
@@ -27,7 +28,7 @@ get_bss_effort_daily <- function(bss_fit, ecg, ...){
       estimate = "E_daily"
     ) |>
     dplyr::left_join(dwg$days |>
-                select("event_date", "day_index", "week", "month"),
+                dplyr::select("event_date", "day_index", "week", "month"),
               by = "day_index") |>
     dplyr::relocate("estimate", "estimate_index", "est_cg", "day_index", "event_date", "week", "month", "section_num", "angler_final") |>
     dplyr::arrange(.data$event_date)

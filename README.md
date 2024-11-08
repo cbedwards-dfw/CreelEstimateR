@@ -47,6 +47,14 @@ which calls most/all the others?
 - get_bss_overview
 - map_data_grade
 - plot_paired_census_index
+- plot_est_pe_catch
+- plot_est_pe_effort
+- plot_inputs_pe_census_vs_index
+- plot_inputs_pe_cpue_period
+- prep_days
+- prep_dwg_census_expan
+- prep_dwg_effort_census
+- prep_dwg_effort_index
 
 ### finalizing documentation:
 

@@ -2,9 +2,9 @@
 % Please edit documentation in R/plot_est_pe_catch.R
 \name{plot_est_pe_catch}
 \alias{plot_est_pe_catch}
-\title{Title}
+\title{plot PE catch estimates by catch group (est_cg), period (time stratum) and section}
 \usage{
-plot_est_pe_catch(estimates_pe_catch, est_catch_group, period_pe, ...)
+plot_est_pe_catch(estimates_pe_catch, est_catch_group, period_pe)
 }
 \arguments{
 \item{estimates_pe_catch}{??}
@@ -12,12 +12,10 @@ plot_est_pe_catch(estimates_pe_catch, est_catch_group, period_pe, ...)
 \item{est_catch_group}{??}
 
 \item{period_pe}{??}
-
-\item{...}{??}
 }
 \value{
 ??
 }
 \description{
-Title
+Dev note: is estimates_pe$catch supposed to be estimates_pe_catch in all the code below? Seems like it should be.
 }

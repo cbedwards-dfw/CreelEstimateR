@@ -4,20 +4,17 @@
 \alias{json_conversion}
 \title{Convert model estimate metadata objects to json format}
 \usage{
-json_conversion(type, ...)
+json_conversion(type)
 }
 \arguments{
 \item{type}{Character string; one of "script", "regulations", or "r_session". Evan or Colt: help!}
-
-\item{...}{Evan or Colt: help! Looks like we have space for optional arguments, but unclear if they get used anywhehre.}
 }
 \value{
 Evan or colt: help!
 }
 \description{
-Dev note: this function relies on \code{params}, which is not defined here. Consult with team.
-Dev note: use of \verb{<<-} assignment is problematic. Consult team.
-Dev note: relies on \code{analysis_lut}, which is not defined here. Consult team. Update: rewrite to take that in.
+Dev note: This function is modifying \code{analysis_lut} in the global envi with \verb{<<-}. we need
+to rewrite to take in and then return \code{analysis_lut}. Also needs to take \code{params} as an arg.
 }
 \examples{
 \dontrun{

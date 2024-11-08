@@ -4,12 +4,10 @@
 \alias{fetch_dwg}
 \title{Fetch... something?}
 \usage{
-fetch_dwg(fishery_name, ...)
+fetch_dwg(fishery_name)
 }
 \arguments{
 \item{fishery_name}{??}
-
-\item{...}{??}
 }
 \value{
 ??

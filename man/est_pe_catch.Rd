@@ -4,19 +4,17 @@
 \alias{est_pe_catch}
 \title{Title}
 \usage{
-est_pe_catch(days, pe_inputs_list, ...)
+est_pe_catch(days, pe_inputs_list)
 }
 \arguments{
 \item{days}{Help!}
 
 \item{pe_inputs_list}{Help!}
-
-\item{...}{Why do we have this?}
 }
 \value{
 Help!
 }
 \description{
 Dev notes: unclear why we include \code{...}.
-Dev notes: missing \code{params}, \code{dwg}.
+Dev notes: need to add dwg and params as arguments
 }

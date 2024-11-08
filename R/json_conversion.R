@@ -1,11 +1,9 @@
 #' Convert model estimate metadata objects to json format
 #'
-#' Dev note: this function relies on `params`, which is not defined here. Consult with team.
-#' Dev note: use of `<<-` assignment is problematic. Consult team.
-#' Dev note: relies on `analysis_lut`, which is not defined here. Consult team. Update: rewrite to take that in.
+#' Dev note: This function is modifying `analysis_lut` in the global envi with `<<-`. we need
+#' to rewrite to take in and then return `analysis_lut`. Also needs to take `params` as an arg.
 #'
 #' @param type Character string; one of "script", "regulations", or "r_session". Evan or Colt: help!
-#' @param ... Evan or Colt: help! Looks like we have space for optional arguments, but unclear if they get used anywhehre.
 #'
 #' @return Evan or colt: help!
 #' @export
@@ -15,7 +13,7 @@
 #'json_conversion(type = "script")
 #'json_conversion(type = "r_session")
 #'}
-json_conversion <- function(type, ...) {
+json_conversion <- function(type) {
 
   #check type
   valid_types <- c("script", "regulations", "r_session")

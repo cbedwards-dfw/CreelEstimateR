@@ -4,12 +4,10 @@
 \alias{plot_inputs_pe_census_vs_index}
 \title{Plot paired season-long counts from census and index angler effort count surveys}
 \usage{
-plot_inputs_pe_census_vs_index(census_TI_expan, ...)
+plot_inputs_pe_census_vs_index(census_TI_expan)
 }
 \arguments{
 \item{census_TI_expan}{??}
-
-\item{...}{??}
 }
 \value{
 ??

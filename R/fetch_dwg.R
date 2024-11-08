@@ -1,12 +1,11 @@
 #' Fetch... something?
 #'
 #' @param fishery_name ??
-#' @param ... ??
 #'
 #' @return ??
 #' @export
 #'
-fetch_dwg <- function(fishery_name, ...){
+fetch_dwg <- function(fishery_name){
 
   dwg_base <- list(
     #event = "https://data.wa.gov/resource/ui95-axtn.csv",
@@ -29,8 +28,8 @@ fetch_dwg <- function(fishery_name, ...){
   ) |>
     utils::URLencode() |>
     readr::read_csv(show_col_types = F) |>
-    tidyr::drop_na(count_type) |>
-    dplyr::select(-created_datetime, -modified_datetime)
+    tidyr::drop_na(.data$count_type) |>
+    dplyr::select(-.data$created_datetime, -.data$modified_datetime)
 
   dwg$ll <- paste0(
     dwg_base$water_bodies,
@@ -50,7 +49,7 @@ fetch_dwg <- function(fishery_name, ...){
     utils::URLencode() |>
     readr::read_csv(show_col_types = F) |>
     dplyr::select(
-      -created_datetime, -modified_datetime)
+      -.data$created_datetime, -.data$modified_datetime)
 
   dwg$catch <- paste0(
     dwg_base$catch,

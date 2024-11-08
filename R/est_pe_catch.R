@@ -1,19 +1,17 @@
 #' Title
 #'
 #'  Dev notes: unclear why we include `...`.
-#'  Dev notes: missing `params`, `dwg`.
+#'  Dev notes: need to add dwg and params as arguments
 #'
 #' @param days Help!
 #' @param pe_inputs_list Help!
-#' @param ... Why do we have this?
 #'
 #' @return Help!
 #' @export
 #'
 est_pe_catch <- function(
     days,
-    pe_inputs_list,
-    ...
+    pe_inputs_list
 ){
   est_catch <-
     dplyr::left_join(
@@ -78,7 +76,7 @@ est_pe_catch <- function(
     ) |>
     dplyr::left_join( # add back matching date information for stratum estimates
       dwg$days |>
-        dplyr::select("event_date", "period", "year") |>
+        dplyr::select(tidyselect::all_of(c("event_date", "period", "year"))) |>
         dplyr::group_by("period") |>
         dplyr::summarise(
           min_event_date = min(.data$event_date),
