@@ -15,7 +15,7 @@
 #' c <- fetch_db_table(con, "creel", "fishery_location_lut", filter = c("survey_type == 'Index'", "section_num == '1'"))
 #' }
 
-fetch_db_table <- function(con = NULL, schema, table, filter = NULL) {
+fetch_db_table <- function(con, schema, table, filter = NULL) {
 
   if(!DBI::dbIsValid(con)) {
     stop("No database connection provided.")

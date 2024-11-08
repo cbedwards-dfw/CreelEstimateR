@@ -38,7 +38,9 @@ Some build cleanup will only be possible iteratively.
 We should discuss which functions need to be exported. I haven't reached it yet, but there
 may a single "control" function that is called, and which calls most/all the others?
 
-### Converting:
+### Initial conversion:
+
+From [https://github.com/wdfw-fp/CreelEstimates/tree/main/R_functions](https://github.com/wdfw-fp/CreelEstimates/tree/main/R_functions)
 
 - json_conversion.R: 3 issues.
 - confirm_db_upload
@@ -64,6 +66,9 @@ may a single "control" function that is called, and which calls most/all the oth
 - prep_dwg_census_expan
 - prep_dwg_effort_census
 - prep_dwg_effort_index
+- prep_dwg_interview_angler_types
+- prep_dwg_interview_fishing_time
+- prep_export
 
 
 ### finalizing documentation:

@@ -4,7 +4,7 @@
 \alias{fetch_db_table}
 \title{Query database tables}
 \usage{
-fetch_db_table(con = NULL, schema, table, filter = NULL)
+fetch_db_table(con, schema, table, filter = NULL)
 }
 \arguments{
 \item{con}{Connection to database}
