@@ -36,7 +36,7 @@ est_pe_catch <- function(
       ,
       by = c("section_num", "event_date", "angler_final")
     ) |>
-    dplyr::group_by("section_num", "period", "day_type", "angler_final", "est_cg") |>
+    dplyr::group_by(.data$section_num, .data$period, .data$day_type, .data$angler_final, .data$est_cg) |>
     dplyr::summarize(
       n_obs = sum(!is.na(.data$catch_estimate)),
       dplyr::across(
@@ -57,7 +57,7 @@ est_pe_catch <- function(
     #!!not sure this is correct - could/should recalc df for within-week/month?
     dplyr::left_join(
       pe_inputs_list$df |>
-        dplyr::distinct("section_num", "angler_final", "df")
+        dplyr::distinct(.data$section_num, .data$angler_final, .data$df)
       ,
       by = c("section_num", "angler_final")
     ) |>
@@ -77,7 +77,7 @@ est_pe_catch <- function(
     dplyr::left_join( # add back matching date information for stratum estimates
       dwg$days |>
         dplyr::select(tidyselect::all_of(c("event_date", "period", "year"))) |>
-        dplyr::group_by("period") |>
+        dplyr::group_by(.data$period) |>
         dplyr::summarise(
           min_event_date = min(.data$event_date),
           max_event_date = max(.data$event_date)),

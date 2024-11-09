@@ -25,11 +25,6 @@ This package is an adaptation of...
 ## Dev notes:
 
 - Will need to update documentation
-- Many functions include `...` with no apparent use. I suspect these reflect additional
-necessary arguments that have not been officially included in the function, like "params"?
-- When using tidyverse tools in packages, `select`-type functions need to have all column 
-names surrounded by quotes. `mutate`-type functions need to have `.data$` prepended to 
-column names. I have attempted this, but may have mixed up some cases. Debugging may be necessary.
 
 ## Progress:
 
@@ -38,7 +33,9 @@ Some build cleanup will only be possible iteratively.
 We should discuss which functions need to be exported. I haven't reached it yet, but there
 may a single "control" function that is called, and which calls most/all the others?
 
-### Converting:
+### Initial conversion:
+
+From [https://github.com/wdfw-fp/CreelEstimates/tree/main/R_functions](https://github.com/wdfw-fp/CreelEstimates/tree/main/R_functions)
 
 - json_conversion.R: 3 issues.
 - confirm_db_upload
@@ -64,6 +61,21 @@ may a single "control" function that is called, and which calls most/all the oth
 - prep_dwg_census_expan
 - prep_dwg_effort_census
 - prep_dwg_effort_index
+- prep_dwg_interview_angler_types
+- prep_dwg_interview_fishing_time
+- prep_export
+- prep_inputs_bss
+- prep_inputs_pe_ang_hrs
+- prep_inputs_pe_daily_cpue_catch_est
+- prep_inputs_pe_days_total
+- prep_inputs_pe_df
+- prep_inputs_pe_int_ang_per_object
+- prep_inputs_pe_paired_census_index_counts
+- process_estimates_bss
+- process_estimates_pe
+- transform_estimates
+- write_db_tables
+
 
 
 ### finalizing documentation:

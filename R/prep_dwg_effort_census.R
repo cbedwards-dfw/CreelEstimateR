@@ -32,15 +32,17 @@ prep_dwg_effort_census <- function(
         #this nested join is typically expanding, as multiple index counts may match each census section & date
         #then the slice_min & distinct cut back down to a single value to reassign to above
         dplyr::left_join(
-          dplyr::distinct("eff_cen", "section_num", "event_date", "tie_in_indicator", "effort_start_time", "count_sequence"),
-          dplyr::distinct("eff_ind", "section_num", "event_date", "tie_in_indicator", "effort_start_time", "count_sequence"),
+          dplyr::distinct(.data$eff_cen, .data$section_num, .data$event_date,
+          .data$tie_in_indicator, .data$effort_start_time, .data$count_sequence),
+          dplyr::distinct(.data$eff_ind, .data$section_num, .data$event_date,
+                          .data$tie_in_indicator, .data$effort_start_time, .data$count_sequence),
           by = c("section_num", "event_date"),
           suffix = c("_cen", "_ind")
         ) |>
-          dplyr::group_by("section_num", "event_date") |>
+          dplyr::group_by(.data$section_num, .data$event_date) |>
           dplyr::slice_min(abs(.data$effort_start_time_cen - .data$effort_start_time_ind), n = 1) |>
           dplyr::ungroup() |>
-          dplyr::distinct("section_num", "event_date", count_sequence = .data$count_sequence_ind)
+          dplyr::distinct(.data$section_num, .data$event_date, count_sequence = .data$count_sequence_ind)
         ,
         by = c("section_num", "event_date")
       ) |>
@@ -69,9 +71,10 @@ prep_dwg_effort_census <- function(
     census_angler_final<-
       census_angler_groups |>
       dplyr::filter(.data$angler_final != "fail") |>
-      dplyr::group_by("section_num", "event_date", "tie_in_indicator", "count_sequence", "angler_final", "angler_final_int") |>
+      dplyr::group_by(.data$section_num,.data$ event_date, .data$tie_in_indicator,
+                      .data$count_sequence, .data$angler_final, .data$angler_final_int) |>
       dplyr::summarize(count_census = sum(.data$count_quantity), .groups = "drop") |>
-      dplyr::arrange("section_num", "event_date", "count_sequence") |>
+      dplyr::arrange(.data$section_num, .data$event_date, .data$count_sequence) |>
       dplyr::mutate(
         fishery_name = params$fishery_name # add back fishery_name
       ) |>
@@ -115,7 +118,7 @@ prep_dwg_effort_census <- function(
 
     index_angler_final<-
       index_angler_groups |>
-      dplyr::group_by("section_num", "event_date", "count_sequence", "angler_final") |>
+      dplyr::group_by(.data$section_num, .data$event_date, .data$count_sequence, .data$angler_final) |>
       dplyr::summarise(count_index = sum(.data$count_quantity), .groups = "drop") |>
       dplyr::arrange(.data$section_num, .data$event_date, .data$count_sequence) |>
       dplyr::mutate(
