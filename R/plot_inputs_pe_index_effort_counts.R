@@ -14,7 +14,7 @@ plot_inputs_pe_index_effort_counts <- function(
   effort_index |>
     dplyr::mutate(count_sequence = factor(.data$count_sequence)) |>
     ggplot2::ggplot(ggplot2::aes(.data$event_date, .data$count_index, fill = .data$count_sequence)) +
-    #geom_point() + geom_text(aes(label = count_index), nudge_y = 1, check_overlap = T) +
+    #ggplot2::geom_point() + ggplot2::geom_text(ggplot2::aes(label = count_index), nudge_y = 1, check_overlap = T) +
     ggplot2::geom_col(position = ggplot2::position_dodge(width = 0.7)) +
     ggplot2::scale_x_date("", date_breaks = "7 days", date_labels =  "%m-%d") +
     ggplot2::scale_y_continuous("") +

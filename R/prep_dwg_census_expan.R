@@ -12,7 +12,7 @@
 prep_dwg_census_expan <- function(eff){
   eff |>
     dplyr::filter(.data$location_type == "Section") |>
-    dplyr::distinct("section_num", "p_census_bank", "p_census_boat") |>
+    dplyr::distinct(.data$section_num, .data$p_census_bank, .data$p_census_boat) |>
     tidyr::pivot_longer(
       cols = tidyselect::starts_with("p_census_"),
       names_prefix = "p_census_",

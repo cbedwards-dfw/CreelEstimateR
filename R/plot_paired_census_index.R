@@ -46,12 +46,12 @@ plot_paired_census_index <- function(
       #but as for interview above, first split and collapse to reassign angler_final as total & boat
       dplyr::bind_rows(
         dwg_summarized$effort_census |>
-          dplyr::group_by("section_num", "event_date", "count_sequence") |>
+          dplyr::group_by(.data$section_num, .data$event_date, .data$count_sequence) |>
           dplyr::summarize(angler_final = "total", count_census = sum(.data$count_census),  .groups = "drop")
         ,
         dwg_summarized$effort_census |>
           dplyr::filter(.data$angler_final == "boat") |>
-          dplyr::group_by("section_num", "event_date", "count_sequence") |>
+          dplyr::group_by(.data$section_num, .data$event_date, .data$count_sequence) |>
           dplyr::summarize(angler_final = "boat", count_census = sum(.data$count_census), .groups = "drop")
       ),
       #index counts via interviews for angler-per-vehic; angler_final already total & boat
@@ -65,7 +65,7 @@ plot_paired_census_index <- function(
         eff_ind,
         by = c("angler_final")
       ) |>
-        dplyr::group_by("section_num", "day_type", "angler_final") |>
+        dplyr::group_by(.data$section_num, .data$day_type, .data$angler_final) |>
         dplyr::mutate(
           ang_per_vhcl_trlr = dplyr::if_else(
             is.na(.data$ang_per_vhcl_trlr),
@@ -124,7 +124,7 @@ plot_paired_census_index <- function(
     }
 
     census_TI_expan <- census_TI_expan |>
-      dplyr::group_by("section_num", "angler_final") |>
+      dplyr::group_by(.data$section_num, .data$angler_final) |>
       dplyr::summarise(
         dplyr::across(c("count_census", "count_index"), sum),
         .groups = "drop"

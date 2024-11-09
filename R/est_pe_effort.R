@@ -53,7 +53,7 @@ est_pe_effort <- function(days, pe_inputs_list, sections) {
       ,
       by = c("section_num", "event_date", "angler_final")
     ) |>
-    dplyr::group_by("section_num", "period", "day_type", "angler_final") |>
+    dplyr::group_by(.data$section_num, .data$period, .data$day_type, .data$angler_final) |>
     dplyr::summarize(
       n_obs = sum(!is.na(.data$ang_hrs_daily_mean_TI_expan)),
       dplyr::across(
@@ -73,8 +73,7 @@ est_pe_effort <- function(days, pe_inputs_list, sections) {
     #!!not sure this is correct - could/should recalc df for within-week/month?
     dplyr::left_join(
       pe_inputs_list$df |>
-        dplyr::distinct("section_num", "angler_final", "df")
-      ,
+        dplyr::distinct(.data$section_num, .data$angler_final, .data$df),
       by = c("section_num", "angler_final")
     ) |>
     #!!this carries forward the orig variance eqns but not sure if
@@ -105,7 +104,7 @@ est_pe_effort <- function(days, pe_inputs_list, sections) {
       # add back matching date information for stratum estimates
       days |>
         dplyr::select("event_date", "period", "year") |>
-        dplyr::group_by("period") |>
+        dplyr::group_by(.data$period) |>
         dplyr::summarise(
           min_event_date = min(.data$event_date),
           max_event_date = max(.data$event_date)

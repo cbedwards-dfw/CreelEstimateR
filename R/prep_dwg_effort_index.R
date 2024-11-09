@@ -1,6 +1,6 @@
 #' Aggregates index effort counts over locations within count_seq & section based on study_design and user input values for boat_type_collapse, fish_location_determines_type, angler_type_kayak_pontoon
 #'
-#'  Note summarize() does not account for missed locations with date-section-sequence
+#'  Note dplyr::summarize() does not account for missed locations with date-section-sequence
 #'
 #' @param eff  effort data from dwg filtered using start & end dates passed from params
 #' @param study_design  string passed from params denoting which study design was followed during data collection
@@ -68,9 +68,9 @@ prep_dwg_effort_index <- function(
   # create final object output of interest index_angler_final that summarizes index count data by section_num, event_date, count_sequence, & angler_final
   index_angler_final<-
     index_angler_groups |>
-    dplyr::group_by("section_num", "event_date", "count_sequence", "angler_final") |> #
+    dplyr::group_by(.data$section_num, .data$event_date, .data$count_sequence, .data$angler_final) |> #
     dplyr::summarise(count_index = sum(.data$count_quantity), .groups = "drop") |>
-    dplyr::arrange("section_num", "event_date", "count_sequence") |>
+    dplyr::arrange(.data$section_num, .data$event_date, .data$count_sequence) |>
     dplyr::mutate(
       fishery_name = params$fishery_name # add back fishery_name
       , angler_final_int = as.integer(factor(.data$angler_final))

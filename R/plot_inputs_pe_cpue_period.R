@@ -29,7 +29,7 @@ plot_inputs_pe_cpue_period <- function(
       by=c("event_date")
     ) |>
     dplyr::filter(.data$est_cg == est_catch_group) |>
-    dplyr::group_by("section_num", "period", "day_type", "angler_final", "est_cg") |> #day_type dropped to simplify plot
+    dplyr::group_by(.data$section_num, .data$period, .data$day_type, .data$angler_final, .data$est_cg) |> #day_type dropped to simplify plot
     dplyr::summarise(
       n_obs = dplyr::n(),
       total_catch = sum(.data$fish_count),
@@ -40,7 +40,7 @@ plot_inputs_pe_cpue_period <- function(
     dplyr::left_join( # add back matching date information for stratum estimates
       dwg$days |>
         dplyr::select("event_date", "period", "year") |>
-        dplyr::group_by("period") |>
+        dplyr::group_by(.data$period) |>
         dplyr::summarise(
           min_event_date = min(.data$event_date),
           max_event_date = max(.data$event_date)),
@@ -57,7 +57,7 @@ plot_inputs_pe_cpue_period <- function(
       ggplot2::xlab("Date (week)") +
       ggplot2::labs(title = est_catch_group, fill = "Angler and day type groups") +
       ggplot2::scale_color_brewer(palette = "Blues", aesthetics = c("fill")) +
-      # geom_text(aes(label = n_obs), nudge_y = 0.02, color = "black", check_overlap = TRUE, size = 2.5) + #option to see sample size
+      # ggplot2::geom_text(ggplot2::aes(label = n_obs), nudge_y = 0.02, color = "black", check_overlap = TRUE, size = 2.5) + #option to see sample size
       ggplot2::facet_wrap(~.data$section_num, scales = "fixed", ncol = 2, labeller = ggplot2::label_wrap_gen(multi_line = F))
   }
   else if(period_pe == "month"){
@@ -70,7 +70,7 @@ plot_inputs_pe_cpue_period <- function(
       ggplot2::xlab("Date (month)") +
       ggplot2::labs(title = est_catch_group, fill = "Angler and day type groups") +
       ggplot2::scale_color_brewer(palette = "Blues", aesthetics = c("fill")) +
-      # geom_text(aes(label = n_obs), nudge_y = 0.02, color = "black", check_overlap = TRUE, size = 2.5) + #option to see sample size
+      # ggplot2::geom_text(ggplot2::aes(label = n_obs), nudge_y = 0.02, color = "black", check_overlap = TRUE, size = 2.5) + #option to see sample size
       ggplot2::facet_wrap(~.data$section_num, scales = "fixed", ncol = 2, labeller = ggplot2::label_wrap_gen(multi_line = F))
 
   }
@@ -84,7 +84,7 @@ plot_inputs_pe_cpue_period <- function(
       ggplot2::xlab("Date") +
       ggplot2::labs(title = est_catch_group, fill = "Angler and day type groups") +
       ggplot2::scale_color_brewer(palette = "Blues", aesthetics = c("fill")) +
-      # geom_text(aes(label = n_obs), nudge_y = 0.02, color = "black", check_overlap = TRUE, size = 2.5) + #option to see sample size
+      # ggplot2::geom_text(ggplot2::aes(label = n_obs), nudge_y = 0.02, color = "black", check_overlap = TRUE, size = 2.5) + #option to see sample size
       ggplot2::facet_wrap(~.data$section_num, scales = "fixed", ncol = 2, labeller = ggplot2::label_wrap_gen(multi_line = F))
   }
 }

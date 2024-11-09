@@ -37,7 +37,7 @@ prep_days <- function(
     event_date = seq.Date(date_begin, date_end, by = "day"),
     day = weekdays(.data$event_date),
     day_type = dplyr::if_else(.data$day %in% weekends | .data$event_date %in% holidays, "weekend", "weekday"),
-    day_type_num = as.integer(c("weekend" = 1, "weekday" = 0)[.data$day_type]),  #if_else(str_detect(day_type, "end"), 1, 0),
+    day_type_num = as.integer(c("weekend" = 1, "weekday" = 0)[.data$day_type]),  #dplyr::if_else(stringr::str_detect(day_type, "end"), 1, 0),
     #Monday to Sunday weeks, see ?strptime
     week = as.numeric(format(.data$event_date, "%W")),
     month = as.numeric(format(.data$event_date, "%m")),

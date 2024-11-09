@@ -27,5 +27,5 @@ prep_dwg_effort_index(
 ?
 }
 \description{
-Note summarize() does not account for missed locations with date-section-sequence
+Note dplyr::summarize() does not account for missed locations with date-section-sequence
 }
