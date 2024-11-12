@@ -80,7 +80,7 @@ From [https://github.com/wdfw-fp/CreelEstimates/tree/main/R_functions](https://g
 
 ### finalizing documentation:
 
--
+- CH 11/12/2024 adding "function_descriptions.csv" file which contains draft dictionary explaining R functions with some coarse categorical groupings.
 
 ## Installation
 

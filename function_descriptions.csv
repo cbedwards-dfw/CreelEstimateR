@@ -1,0 +1,41 @@
+﻿function,stage,scope,description
+confirm_db_upload,post-processing,process-specific,Confirms upload of model estimates by querying model_analysis_lut for session analysis_id
+est_pe_catch,estimation,process-specific,Performs point estimate calculation of catch after prep functions.
+est_pe_effort,estimation,process-specific,Performs point estimate calculation of effort after prep functions.
+establish_db_con,n/a,utility,Establishes a connection with the WDFW Postgres database using local configuration and user credentials.
+export_estimates,post-processing,process-specific,"Primary control function of the export, transform, and load (ETL) process. Takes standardized model outputs and user-input parameters to export the model estimates appropriately."
+fetch_db_table,n/a,utility,Helper function to streamline queries of the WDFW Postgres database.
+fetch_dwg,n/a,utility,Downloads a set of electronically collected observations from the statewide freshwater creel database (published at data.wa.gov); these consist of counts at index sites and along census survey sections as well as angler interviews and associated catch information
+fit_bss,estimation,process-specific,"wraps the rstan::stan() function, passing in the data list and various arguments controlling the MCMC process (e.g., number of chains, iterations, etc.)"
+generate_analysis_lut,pre-processing,process-specific,Generates a universally unique identification (uuid) number for each CreelEstimates session.
+get_bss_catch_daily,estimation,process-specific,Extracts daily catch estimates by catch group from the fit bss model.
+get_bss_cpue_daily,estimation,process-specific,Extracts daily CPUE estimates by catch group from the fit bss model.
+get_bss_effort_daily,estimation,process-specific,Extracts daily effort estimates by catch group from the fit bss model.
+get_bss_overview,estimation,process-specific,Extracts bss estimate overview by catch group from the fit bss model.
+JSON_conversion,post-processing,process-specific,Stores several types of metadata as JSON format and appends to analysis lookup table.
+map_data_grade,post-processing,process-specific,"Applies a ""data_grade"" field to every table of the transformed PE and BSS estimates that is defined from a user-input parameter."
+plot_census_index_counts,visualization,process-specific,Creates a scatter plot showing ratio of census effort to index effort counts relative to a 1:1 line.
+plot_est_pe_catch,visualization,process-specific,"Plots PE catch estimates by catch group, period, and section."
+plot_est_pe_effort,visualization,process-specific,Plots PE effort estimates by period and section.
+plot_inputs_pe_census_vs_index,visualization,process-specific,Plots paired season-long counts from census and index angler effort count surveys.
+plot_inputs_pe_cpue_period,visualization,process-specific,"Plots CPUE by period, section, angler type, and catch group."
+plot_inputs_pe_index_effort_counts,visualization,process-specific,Plots index effort counts by count sequence.
+prep_days,pre-processing,process-specific,"Associates time-strata information to the period of interest (e.g., week/month index, potential fishing hours, section-specific closures)"
+prep_dwg_census_expan,pre-processing,process-specific,Creates summary table of census expansion factors based on values in database.
+prep_dwg_effort_census,pre-processing,process-specific,"Aggregates census effort counts, associating to closest-in-time index count."
+prep_dwg_effort_index,pre-processing,process-specific,"Aggregates index effort counts over locations within count_seq and section based on study_design and user input values for boat_type_collapse, fish_location_determines_type, angler_type_kayak_pontoon."
+prep_dwg_interview_angler_types,pre-processing,process-specific,"Creates angler_final field based on study_design designation and user input values for boat_type_collapse, fish_location_determines_type, angler_type_kayak_pontoon."
+prep_dwg_interview_catch,pre-processing,process-specific,"Creates est_cg from catch group component fields, summarizes catch by angler group, and creates output based on study_design and corresponding interview fields needed for angler effort calculations."
+prep_dwg_interview_fishing_time,pre-processing,process-specific,Calculates fishing_time and total time conditional on use angler vs group counts.
+prep_export,post-processing,process-specific,"When exporting estimates to the database, this function queries relevant database lookup tables and associates unique database keys with their respective categorical values in the estimate tables."
+prep_inputs_bss,estimation,process-specific,"Translates the prepared tabular data into a list of the vector and matrix formats required by the stan model code and adds values for several priors; this function is iterated as a list of lists, with element of the outer list associated with each desired ""catch group"""
+prep_inputs_pe_ang_hrs,estimation,process-specific,"Prepares the PE inputs of angler hours, which is calculated by user-input study_design parameter."
+prep_inputs_pe_daily_cpue_catch_est,estimation,process-specific,"Calculates daily CPUE by section, date, angler type, and catch group using ratio-of-means (ROM) method."
+prep_inputs_pe_days_total,estimation,process-specific,"Calculate total days the fishery was open per strata (i.e., period, day type, and secion)."
+prep_inputs_pe_df,estimation,process-specific,Calculate degrees of freedom based on number of creel survey days.
+prep_inputs_pe_int_ang_per_object,estimation,process-specific,"Calculate the number of objects (e.g., trailers, vehicles, boats) each angler group brought to the fishery based on study_design used."
+prep_inputs_pe_paired_census_index_counts,estimation,process-specific,Summarize paired census and index angler effort counts.
+process_estimates_bss,post-processing,process-specific,"Wrangles BSS model output object (estimates_bss) into a standardized format at two scales. As estimates_bss is a ""list within a list"", each catch group has output objects within the larger list of estimates_bss. This function loops through each catch group and binds results into a single dataframe. The table is then pivoted to wrap estimate columns into ""estimate_type"" and ""estimate_value"" columns. Additional columns are added to retain project/fishery information and to match standardized table format. This process is does at the stratum scale and again at the total scale where the difference is which columns are selected during pivot_longer()"
+process_estimates_pe,post-processing,process-specific,"Adds uuid and wrangles PE model output object (estimates_pe) into a standardized format at two scales. At the ""stratum"" scale all of the data is retained at the original grouping levels and stratifications. At the ""total"" scale the model estimates are summarized by dropping the grouping variables section_num, period, day_type, and angler_final"
+transform_estimates,post-processing,process-specific,Combines outputs from process_estimates_pe and process_estimates_bss. This function also performs final formatting changes to standardize all outputs.
+write_db_tables,post-processing,process-specific,This function defines how each of the three Postgress database tables have estimates written to them.
