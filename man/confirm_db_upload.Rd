@@ -7,17 +7,14 @@
 confirm_db_upload(con, analysis_lut)
 }
 \arguments{
-\item{con}{Connection to... SOMETHING. Evan or colt: help!}
+\item{con}{Connection to WDFW PostgreSQL database made with DBI-compliant RPostgres package. 'con' made with with establish_db_con.R function.}
 
-\item{analysis_lut}{List? Something? What options make sense?}
+\item{analysis_lut}{Data frame containing session-specific analysis_id and associated metadata created by generate_analysis_lut.R}
 }
 \value{
-Evan or Colt, help:
+nothing returned.
 }
 \description{
 This function attempts to verify that the model estimates have been written as expected and that the same number of
 rows, columns, and values have been written. Currently this is in draft form and needs to be more comprehensive.
-}
-\details{
-Dev note: I assume this should be exported. If so, we may want to add some input validation
 }

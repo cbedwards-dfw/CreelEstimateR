@@ -3,12 +3,10 @@
 #'This function attempts to verify that the model estimates have been written as expected and that the same number of
 #'rows, columns, and values have been written. Currently this is in draft form and needs to be more comprehensive.
 #'
-#' Dev note: I assume this should be exported. If so, we may want to add some input validation
+#' @param con Connection to WDFW PostgreSQL database made with DBI-compliant RPostgres package. 'con' made with with establish_db_con.R function.
+#' @param analysis_lut Data frame containing session-specific analysis_id and associated metadata created by generate_analysis_lut.R
 #'
-#' @param con Connection to... SOMETHING. Evan or colt: help!
-#' @param analysis_lut List? Something? What options make sense?
-#'
-#' @return Evan or Colt, help:
+#' @return nothing returned.
 #' @export
 #'
 confirm_db_upload <- function(con, analysis_lut) {
