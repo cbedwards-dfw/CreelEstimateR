@@ -4,12 +4,14 @@
 \alias{get_bss_effort_daily}
 \title{Get bss effort}
 \usage{
-get_bss_effort_daily(bss_fit, ecg)
+get_bss_effort_daily(bss_fit, ecg, dwg)
 }
 \arguments{
 \item{bss_fit}{??}
 
 \item{ecg}{??}
+
+\item{dwg}{description}
 }
 \value{
 ??

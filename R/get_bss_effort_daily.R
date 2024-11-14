@@ -4,11 +4,12 @@
 #'
 #' @param bss_fit ??
 #' @param ecg ??
+#' @param dwg description
 #'
 #' @return ??
 #' @export
 #'
-get_bss_effort_daily <- function(bss_fit, ecg){
+get_bss_effort_daily <- function(bss_fit, ecg, dwg){
   bss_fit |>
     summary(pars = c("E")) |>
     purrr::pluck("summary") |> #only want the combined-chains version
