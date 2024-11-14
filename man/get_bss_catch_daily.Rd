@@ -4,12 +4,14 @@
 \alias{get_bss_catch_daily}
 \title{Get bss daily catch}
 \usage{
-get_bss_catch_daily(bss_fit, ecg)
+get_bss_catch_daily(bss_fit, ecg, dwg)
 }
 \arguments{
 \item{bss_fit}{??}
 
 \item{ecg}{??}
+
+\item{dwg}{description}
 }
 \value{
 ??

@@ -5,7 +5,7 @@
 #' @return ??
 #' @export
 #'
-get_bss_catch_daily <- function(bss_fit, ecg){
+get_bss_catch_daily <- function(bss_fit, ecg, dwg){
   bss_fit |>
     summary(pars = c("C")) |>
     purrr::pluck("summary") |> #only want the combined-chains version
