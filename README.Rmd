@@ -76,7 +76,48 @@ From [https://github.com/wdfw-fp/CreelEstimates/tree/main/R_functions](https://g
 - transform_estimates
 - write_db_tables
 
+### checking with devtools:
 
+CH 11/13/2024
+
+Edits to functions made by iterative running of devtools::check()
+
+- est_pe_catch: add "params" and "dwg" to list of arguments
+- est_pe_effort: add "params" to list of arguments
+- get_bss_catch_daily: add "dwg" to list of arguments
+- get_bss_cpue_daily: add "dwg" to list of arguments
+- get_bss_effort_daily: add "dwg" to list of arguments
+- plot_est_pe_catch: add "estimates_pe" to list of arguments
+- plot_est_pe_effort: add "estimates_pe" to list of arguments
+- process_estimates_bss: 
+   - include ".data$" on renaming of percentage values to remove "%" symbol
+- process_estimates_pe: add "params" to list of arguments
+- plot_inputs_pe_cpue_period: 
+    - add "dwg" to list of arguments
+    - NOTE: both "dwg$days" and "days" are used?
+- plot_paired_census_index: add "angler_hours_daily_mean"  and "params" to list of arguments
+- prep_days: add "params" to list of arguments
+- prep_dwg_effort_census: add "params" to list of arguments
+- prep_dwg_effort_index: add "params" to list of arguments
+- prep_dwg_interview_fishing_time: add "person_count_type" to list of arguments
+- map_data_grade: remove "assign()" calls in favor of "return(list())"
+    - NOTE: be aware of downstream impacts! We are other updates needed?
+- generate_analysis_lut: replace "assign()" with "return()"
+- fetch_db_table: add a line to reduce one line length over 100 characters
+- export_estimates:
+    - remove assign() of "con" to global env. It is not used later in the template script.
+    - remove assign() of "creel_estimates_db" to gloval env. It is not used later in the template script.
+    - remove "write_db_tables" call now that they are split out.
+    - added "creel_estimates_db" to arguments of write_total and write_stratum where called.
+write_db_tables: removed function. separated into three independent functions.
+    - internal function validate_lut moved inside write_lut
+    - write_lut: 
+    - write_total: add "creel_estimates_db" to list of arguments
+    - write_stratum: add "creel_estimates_db" to list of arguments
+- json_conversion:
+    - add "params" to list of arguments
+    - add "analysis_lut" to list of arguments
+    - remove use of "<<-" assignment in favor of return()
 
 ### finalizing documentation:
 
