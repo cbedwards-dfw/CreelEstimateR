@@ -2,16 +2,18 @@
 % Please edit documentation in R/fetch_dwg.R
 \name{fetch_dwg}
 \alias{fetch_dwg}
-\title{Fetch... something?}
+\title{Download creel dataset from data.wa.gov}
 \usage{
 fetch_dwg(fishery_name)
 }
 \arguments{
-\item{fishery_name}{??}
+\item{fishery_name}{Character string with water body area, focal species, year / year-group used to fetch a subset of data for analysis}
 }
 \value{
 ??
 }
 \description{
-Fetch... something?
+Downloads a set of electronically collected observations from the statewide freshwater creel database.
+These consist of counts at index sites and along census survey sections,
+as well as angler interviews and associated catch information.
 }
