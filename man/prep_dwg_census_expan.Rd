@@ -7,7 +7,7 @@
 prep_dwg_census_expan(eff)
 }
 \arguments{
-\item{effort}{data from dwg filtered using start & end dates passed from params}
+\item{eff}{data from dwg filtered using start & end dates passed from params}
 }
 \value{
 ??

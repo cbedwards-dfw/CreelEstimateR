@@ -4,7 +4,7 @@
 #' NOTE: values of "p_census/p_TI" are entered and stored in creel db
 #' NOTE: currently, values of "p_census/p_TI" are limited to two "angler_final" groupings (bank, boat)
 #'
-#' @param effort data from dwg filtered using start & end dates passed from params
+#' @param eff data from dwg filtered using start & end dates passed from params
 #'
 #' @return ??
 #' @export
