@@ -1,6 +1,6 @@
-#' Calculate mean and variance for section_num-period-day_type-angler_final
+#' Estimate effort with PE method
 #'
-#' This is the finest stratification above individual days.
+#' Performs point estimate calculation of effort after prep functions. Calculate mean and variance for section_num-period-day_type-angler_final. This is the finest stratification above individual days.
 #'
 #' @details sample size is inherently small for a day_type within week stratification
 #' -the var() and sd() functions return NA when passed a length-1 vector (single obs)
@@ -9,14 +9,15 @@
 #' such that pooling over weekend/weekday is counter to data collection protocol/design
 #' could pool over weeks (and perhaps angler_final) if a better variance is desired over the fishery duration
 #'
-#' @param days ??
+#' @param days tibble of dates and corresponding fields (e.g., year, month, period, open/close fishery by section)
 #' @param pe_inputs_list ??
 #' @param sections ??
+#' @param params description
 #'
 #' @return ??
 #' @export
 
-est_pe_effort <- function(days, pe_inputs_list, sections) {
+est_pe_effort <- function(days, pe_inputs_list, sections, params) {
   est_effort <-
     dplyr::left_join(
       #dates expanded to sections * angler_final * opendays

@@ -2,22 +2,24 @@
 % Please edit documentation in R/est_pe_effort.R
 \name{est_pe_effort}
 \alias{est_pe_effort}
-\title{Calculate mean and variance for section_num-period-day_type-angler_final}
+\title{Estimate effort with PE method}
 \usage{
-est_pe_effort(days, pe_inputs_list, sections)
+est_pe_effort(days, pe_inputs_list, sections, params)
 }
 \arguments{
-\item{days}{??}
+\item{days}{tibble of dates and corresponding fields (e.g., year, month, period, open/close fishery by section)}
 
 \item{pe_inputs_list}{??}
 
 \item{sections}{??}
+
+\item{params}{description}
 }
 \value{
 ??
 }
 \description{
-This is the finest stratification above individual days.
+Performs point estimate calculation of effort after prep functions. Calculate mean and variance for section_num-period-day_type-angler_final. This is the finest stratification above individual days.
 }
 \details{
 sample size is inherently small for a day_type within week stratification
