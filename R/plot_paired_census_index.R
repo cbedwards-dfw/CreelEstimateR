@@ -10,6 +10,8 @@
 #' @param dwg_summarized ??
 #' @param interview_ang_per_vehic ??
 #' @param census_expan ??
+#' @param angler_hours_daily_mean ??
+#' @param params ??
 #'
 #' @return List. `$plot` is ggplot object, `$census_TI_expan` is ??
 #' @export
@@ -18,7 +20,9 @@ plot_paired_census_index <- function(
     days,
     dwg_summarized,
     interview_ang_per_vehic,
-    census_expan
+    census_expan,
+    angler_hours_daily_mean,
+    params
 ){
 
   eff_ind <- dplyr::left_join(
