@@ -15,7 +15,8 @@ prep_days(
   sections,
   closures,
   day_length,
-  day_length_inputs
+  day_length_inputs,
+  params
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ prep_days(
 \item{day_length}{??}
 
 \item{day_length_inputs}{??}
+
+\item{params}{??}
 }
 \value{
 ??

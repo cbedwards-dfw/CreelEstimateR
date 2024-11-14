@@ -11,6 +11,7 @@
 #' @param closures ??
 #' @param day_length ??
 #' @param day_length_inputs ??
+#' @param params ??
 #'
 #' @return ??
 #' @export
@@ -25,7 +26,8 @@ prep_days <- function(
     sections, #numeric vector of all possible sections to estimate
     closures, #tibble of fishery_name, section number and date of closures
     day_length,
-    day_length_inputs){
+    day_length_inputs,
+    params){
 
   date_begin <- as.Date(date_begin, format="%Y-%m-%d")
   date_end <- as.Date(date_end, format="%Y-%m-%d")
