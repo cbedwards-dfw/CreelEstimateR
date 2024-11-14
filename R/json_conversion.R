@@ -1,9 +1,9 @@
 #' Convert model estimate metadata objects to json format
 #'
-#' Dev note: This function is modifying `analysis_lut` in the global envi with `<<-`. we need
-#' to rewrite to take in and then return `analysis_lut`. Also needs to take `params` as an arg.
 #'
 #' @param type Character string; one of "script", "regulations", or "r_session". Evan or Colt: help!
+#' @param params ??
+#' @param analysis_lut ??
 #'
 #' @return Evan or colt: help!
 #' @export
@@ -13,7 +13,7 @@
 #'json_conversion(type = "script")
 #'json_conversion(type = "r_session")
 #'}
-json_conversion <- function(type) {
+json_conversion <- function(type, params, analysis_lut) {
 
   #check type
   valid_types <- c("script", "regulations", "r_session")
@@ -47,7 +47,9 @@ json_conversion <- function(type) {
       cat("\nJSON valid... adding `analysis_json` to analysis_lut.")
 
       #add to analysis look up table
-      analysis_lut <<- analysis_lut |>  dplyr::mutate(analysis_json = json_script)
+      analysis_lut <- analysis_lut |>  dplyr::mutate(analysis_json = json_script)
+
+      return(analysis_lut)
 
     } else {
       warning("\nJSON format not valid! JSON representation of local script not added to analysis_lut.")
@@ -91,7 +93,9 @@ json_conversion <- function(type) {
       #add to analysis look up table
       ### This is the global environment assignment
       ### Need to do a minor restructure to avoid the global envi.
-      analysis_lut <<- analysis_lut |>  dplyr::mutate(r_session_json = r_session_json)
+      analysis_lut <- analysis_lut |>  dplyr::mutate(r_session_json = r_session_json)
+
+      return(analysis_lut)
 
     } else {
       warning("\nJSON format not valid! JSON representation of R session information not added to analysis_lut.")

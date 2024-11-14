@@ -4,17 +4,20 @@
 \alias{json_conversion}
 \title{Convert model estimate metadata objects to json format}
 \usage{
-json_conversion(type)
+json_conversion(type, params, analysis_lut)
 }
 \arguments{
 \item{type}{Character string; one of "script", "regulations", or "r_session". Evan or Colt: help!}
+
+\item{params}{??}
+
+\item{analysis_lut}{??}
 }
 \value{
 Evan or colt: help!
 }
 \description{
-Dev note: This function is modifying \code{analysis_lut} in the global envi with \verb{<<-}. we need
-to rewrite to take in and then return \code{analysis_lut}. Also needs to take \code{params} as an arg.
+Convert model estimate metadata objects to json format
 }
 \examples{
 \dontrun{
