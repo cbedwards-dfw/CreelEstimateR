@@ -2,13 +2,15 @@
 #'
 #' @param estimates_pe_effort ??
 #' @param period_pe ??
+#' @param estimates_pe ??
 #'
 #' @return ??
 #' @export
 #'
 plot_est_pe_effort <- function(
     estimates_pe_effort,
-    period_pe
+    period_pe,
+    estimates_pe
 ){
   if(period_pe == "week"){
     estimates_pe$effort |>

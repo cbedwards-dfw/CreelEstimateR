@@ -4,12 +4,14 @@
 \alias{plot_est_pe_effort}
 \title{plot PE effort estimates by period (time stratum) and section}
 \usage{
-plot_est_pe_effort(estimates_pe_effort, period_pe)
+plot_est_pe_effort(estimates_pe_effort, period_pe, estimates_pe)
 }
 \arguments{
 \item{estimates_pe_effort}{??}
 
 \item{period_pe}{??}
+
+\item{estimates_pe}{??}
 }
 \value{
 ??
