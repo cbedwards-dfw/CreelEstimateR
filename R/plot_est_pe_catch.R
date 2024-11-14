@@ -5,6 +5,7 @@
 #' @param estimates_pe_catch ??
 #' @param est_catch_group ??
 #' @param period_pe ??
+#' @param estimates_pe ??
 #'
 #' @return ??
 #' @export
@@ -12,7 +13,8 @@
 plot_est_pe_catch <- function(
     estimates_pe_catch,
     est_catch_group,
-    period_pe
+    period_pe,
+    estimates_pe
 )
 
 {

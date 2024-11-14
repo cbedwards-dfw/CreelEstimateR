@@ -4,7 +4,7 @@
 \alias{plot_est_pe_catch}
 \title{plot PE catch estimates by catch group (est_cg), period (time stratum) and section}
 \usage{
-plot_est_pe_catch(estimates_pe_catch, est_catch_group, period_pe)
+plot_est_pe_catch(estimates_pe_catch, est_catch_group, period_pe, estimates_pe)
 }
 \arguments{
 \item{estimates_pe_catch}{??}
@@ -12,6 +12,8 @@ plot_est_pe_catch(estimates_pe_catch, est_catch_group, period_pe)
 \item{est_catch_group}{??}
 
 \item{period_pe}{??}
+
+\item{estimates_pe}{??}
 }
 \value{
 ??
