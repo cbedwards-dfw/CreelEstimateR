@@ -10,8 +10,6 @@ prep_inputs_pe_int_ang_per_object(dwg_summarized, study_design)
 \item{dwg_summarized}{list with shared interview, index and census tibbles}
 
 \item{study_design}{parameter specifying study design and which if/else loop gets called below}
-
-\item{...}{}
 }
 \value{
 ??

@@ -4,7 +4,6 @@
 #'
 #' @param dwg_summarized list with shared interview, index and census tibbles
 #' @param study_design parameter specifying study design and which if/else loop gets called below
-#' @param ...
 #'
 #' @return ??
 #' @export
