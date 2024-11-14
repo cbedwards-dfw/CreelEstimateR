@@ -2,9 +2,14 @@
 % Please edit documentation in R/prep_dwg_interview_fishing_time.R
 \name{prep_dwg_interview_fishing_time}
 \alias{prep_dwg_interview_fishing_time}
-\title{Calc fishing_time & total time conditional on use angler vs group counts}
+\title{title}
 \usage{
-prep_dwg_interview_fishing_time(dwg_interview, min_fishing_time, study_design)
+prep_dwg_interview_fishing_time(
+  dwg_interview,
+  min_fishing_time,
+  study_design,
+  person_count_type
+)
 }
 \arguments{
 \item{dwg_interview}{interview data from dwg filtered using start & end dates passed from params}
@@ -12,10 +17,15 @@ prep_dwg_interview_fishing_time(dwg_interview, min_fishing_time, study_design)
 \item{min_fishing_time}{numeric passed from params to filter fishing_time at least as long as this per-person duration}
 
 \item{study_design}{string passed from params denoting which study design was followed during data collection}
+
+\item{person_count_type}{??}
 }
 \value{
 ??
 }
 \description{
+Calc fishing_time & total time conditional on use angler vs group counts
+}
+\details{
 Dev note: relies on person_count_type in global.
 }
