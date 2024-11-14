@@ -2,19 +2,22 @@
 % Please edit documentation in R/est_pe_catch.R
 \name{est_pe_catch}
 \alias{est_pe_catch}
-\title{Title}
+\title{Estimate catch with PE method}
 \usage{
-est_pe_catch(days, pe_inputs_list)
+est_pe_catch(days, pe_inputs_list, params, dwg)
 }
 \arguments{
-\item{days}{Help!}
+\item{days}{tibble of dates and corresponding fields (e.g., year, month, period, open/close fishery by section)}
 
 \item{pe_inputs_list}{Help!}
+
+\item{params}{description}
+
+\item{dwg}{description}
 }
 \value{
-Help!
+Catch estimates from PE method
 }
 \description{
-Dev notes: unclear why we include \code{...}.
-Dev notes: need to add dwg and params as arguments
+Performs point estimate calculation of catch after prep_dwg_ and prep_inputs_pe_ functions.
 }

@@ -1,17 +1,20 @@
-#' Title
+#' Estimate catch with PE method
 #'
-#'  Dev notes: unclear why we include `...`.
-#'  Dev notes: need to add dwg and params as arguments
+#'Performs point estimate calculation of catch after prep_dwg_ and prep_inputs_pe_ functions.
 #'
-#' @param days Help!
+#' @param days  tibble of dates and corresponding fields (e.g., year, month, period, open/close fishery by section)
 #' @param pe_inputs_list Help!
+#' @param params description
+#' @param dwg description
 #'
-#' @return Help!
+#' @return Catch estimates from PE method
 #' @export
 #'
 est_pe_catch <- function(
     days,
-    pe_inputs_list
+    pe_inputs_list,
+    params,
+    dwg
 ){
   est_catch <-
     dplyr::left_join(
