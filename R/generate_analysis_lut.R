@@ -1,6 +1,9 @@
-#' Generate base analysis look up table with session-specific uuid
+#' Generate analysis look up table
 #'
-#' Dev note: For a package, we really want to avoid using `assign`. Can we just return this?
+#' Data frame that contains a universally unique identification (uuid) number for each CreelEstimates work session.
+#' This look up table also contains other important metadata about the analysis, such as analysis name and
+#' the CreelEstimates GitHub repository version used to produce a given set of estimates.
+#' The function json_conversion.R adds additional fields to this table when exporting to csv or the Postgres database.
 #'
 #' @param params ??
 #'
@@ -29,10 +32,11 @@ generate_analysis_lut <- function(params) {
                           )
     )
 
-    assign("analysis_lut", analysis_lut, envir = .GlobalEnv)
+  return(analysis_lut)
 
   } else {
     cat("\nanalysis_lut with unique 'analysis_id' already generated in this R session.")
   }
-  return(invisible(analysis_lut))
+
+  return(analysis_lut)
 }

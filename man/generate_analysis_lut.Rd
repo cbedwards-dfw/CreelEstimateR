@@ -2,7 +2,7 @@
 % Please edit documentation in R/generate_analysis_lut.R
 \name{generate_analysis_lut}
 \alias{generate_analysis_lut}
-\title{Generate base analysis look up table with session-specific uuid}
+\title{Generate analysis look up table}
 \usage{
 generate_analysis_lut(params)
 }
@@ -13,5 +13,8 @@ generate_analysis_lut(params)
 ??
 }
 \description{
-Dev note: For a package, we really want to avoid using \code{assign}. Can we just return this?
+Data frame that contains a universally unique identification (uuid) number for each CreelEstimates work session.
+This look up table also contains other important metadata about the analysis, such as analysis name and
+the CreelEstimates GitHub repository version used to produce a given set of estimates.
+The function json_conversion.R adds additional fields to this table when exporting to csv or the Postgres database.
 }
