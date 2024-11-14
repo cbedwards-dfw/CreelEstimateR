@@ -7,7 +7,7 @@
 fetch_db_table(con, schema, table, filter = NULL)
 }
 \arguments{
-\item{con}{Connection to database}
+\item{con}{Connection to WDFW PostgreSQL database made with DBI-compliant RPostgres package. 'con' created by establish_db_con.R function.}
 
 \item{schema}{query schema}
 
@@ -19,12 +19,13 @@ fetch_db_table(con, schema, table, filter = NULL)
 tibble of query results
 }
 \description{
-Query database tables
+Helper function to streamline queries of the WDFW Postgres database.
 }
 \examples{
 \dontrun{
 a <- fetch_db_table(con, "creel", "fishery_location_lut")
 b <- fetch_db_table(con, "creel", "fishery_location_lut", filter = "survey_type == 'Index'")
-c <- fetch_db_table(con, "creel", "fishery_location_lut", filter = c("survey_type == 'Index'", "section_num == '1'"))
+c <- fetch_db_table(con, "creel", "fishery_location_lut",
+filter = c("survey_type == 'Index'", "section_num == '1'"))
 }
 }

@@ -1,6 +1,8 @@
 #' Query database tables
 #'
-#' @param con Connection to database
+#' Helper function to streamline queries of the WDFW Postgres database.
+#'
+#' @param con Connection to WDFW PostgreSQL database made with DBI-compliant RPostgres package. 'con' created by establish_db_con.R function.
 #' @param schema query schema
 #' @param table table in database
 #' @param filter filter to apply during query
@@ -12,7 +14,8 @@
 #' \dontrun{
 #' a <- fetch_db_table(con, "creel", "fishery_location_lut")
 #' b <- fetch_db_table(con, "creel", "fishery_location_lut", filter = "survey_type == 'Index'")
-#' c <- fetch_db_table(con, "creel", "fishery_location_lut", filter = c("survey_type == 'Index'", "section_num == '1'"))
+#' c <- fetch_db_table(con, "creel", "fishery_location_lut",
+#' filter = c("survey_type == 'Index'", "section_num == '1'"))
 #' }
 
 fetch_db_table <- function(con, schema, table, filter = NULL) {
@@ -35,26 +38,3 @@ fetch_db_table <- function(con, schema, table, filter = NULL) {
 
   return(result)
 }
-
-# examples
-# a <- fetch_db_table(con, "creel", "fishery_location_lut")
-# b <- fetch_db_table(con, "creel", "fishery_location_lut", filter = "survey_type == 'Index'")
-# c <- fetch_db_table(con, "creel", "fishery_location_lut", filter = c("survey_type == 'Index'", "section_num == '1'"))
-
-# old version of function
-
-# #define function to query database tables
-# fetch_db_table <- function(con = NULL, schema, table) {
-#
-#   if(!DBI::dbIsValid(con)) {
-#     stop("No database connection provided.")
-#   }
-#
-#   table <- dplyr::tbl(con,
-#                       dbplyr::in_schema(dbplyr::sql(schema),
-#                                         dbplyr::sql(table))) |>
-#     dplyr::collect()
-#
-#   return(table)
-# }
-
