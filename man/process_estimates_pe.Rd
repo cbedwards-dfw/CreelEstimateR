@@ -4,12 +4,14 @@
 \alias{process_estimates_pe}
 \title{Title}
 \usage{
-process_estimates_pe(analysis_lut, estimates_pe)
+process_estimates_pe(analysis_lut, estimates_pe, params)
 }
 \arguments{
 \item{analysis_lut}{??}
 
 \item{estimates_pe}{??}
+
+\item{params}{??}
 }
 \value{
 ??

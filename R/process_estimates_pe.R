@@ -2,10 +2,11 @@
 #'
 #' @param analysis_lut ??
 #' @param estimates_pe ??
+#' @param params ??
 #'
 #' @return ??
 #' @export
-process_estimates_pe <- function(analysis_lut, estimates_pe) {
+process_estimates_pe <- function(analysis_lut, estimates_pe, params) {
 
   transformed_pe_data <- list(
     pe_effort = data.frame(),
