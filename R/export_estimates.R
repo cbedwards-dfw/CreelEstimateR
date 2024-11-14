@@ -1,8 +1,7 @@
 #' Export creel model estimates
 #'
-#' This function is the primary control of creel model estimate ETL process.
-#' It calls upon PE and BSS outputs to independently reformat to a standardized format.
-#' The resulting objects are either output locally as a csv or uploaded to the creel database.
+#' Primary control function of the export, transform, and load (ETL) process.
+#' Takes standardized model outputs and user-input parameters to export the model estimates appropriately.
 #'
 #' @param params ??
 #' @param analysis_lut ??
@@ -28,11 +27,9 @@ export_estimates <- function(params, analysis_lut, creel_estimates) {
 
     #connect to database
     con <- establish_db_con()
-    assign("con", con, envir = .GlobalEnv)
 
     #query database for UUIDs and reformat
     creel_estimates_db <- prep_export(con, creel_estimates)
-    assign("creel_estimates_db", creel_estimates_db, envir = .GlobalEnv)
 
     ask_for_confirmation <- function() { #bug: repeats prompt twice in console upon call
       response <- ""
@@ -48,9 +45,6 @@ export_estimates <- function(params, analysis_lut, creel_estimates) {
     }
 
     ### write estimates to database ####
-
-    #call function that defines how tables are written to database
-    write_db_tables(con, analysis_lut, creel_estimates_db)
 
     #model_analysis_lut
     #determine if session analysis_id already exists in database model_analysis_lut table
@@ -78,7 +72,7 @@ export_estimates <- function(params, analysis_lut, creel_estimates) {
           write_lut(con, analysis_lut)
 
           cat(paste0("Writing to model_estimates_total table...  ","\u2713", "\n"))
-          write_total(con)
+          write_total(con, creel_estimates_db)
 
         } else if (params$export_tables == "stratum") {
 
@@ -87,7 +81,7 @@ export_estimates <- function(params, analysis_lut, creel_estimates) {
           write_lut(con, analysis_lut)
 
           cat(paste0("Writing to model_estimates_stratum table...  ","\u2713", "\n"))
-          write_stratum(con)
+          write_stratum(con, creel_estimates_db)
 
         } else if (params$export_tables == "both") {
 
@@ -96,10 +90,10 @@ export_estimates <- function(params, analysis_lut, creel_estimates) {
           write_lut(con, analysis_lut)
 
           cat(paste0("Writing to model_estimates_total table...  ","\u2713", "\n"))
-          write_total(con)
+          write_total(con, creel_estimates_db)
 
           cat(paste0("Writing to model_estimates_stratum table...  ","\u2713", "\n"))
-          write_stratum(con)
+          write_stratum(con, creel_estimates_db)
 
         } else {
           cat("\nParameter export_tables must be either 'total', 'stratum', or 'both'.")

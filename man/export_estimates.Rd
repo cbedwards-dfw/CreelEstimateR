@@ -17,7 +17,6 @@ export_estimates(params, analysis_lut, creel_estimates)
 ??
 }
 \description{
-This function is the primary control of creel model estimate ETL process.
-It calls upon PE and BSS outputs to independently reformat to a standardized format.
-The resulting objects are either output locally as a csv or uploaded to the creel database.
+Primary control function of the export, transform, and load (ETL) process.
+Takes standardized model outputs and user-input parameters to export the model estimates appropriately.
 }
