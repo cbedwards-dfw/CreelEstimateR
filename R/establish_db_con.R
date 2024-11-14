@@ -1,5 +1,7 @@
 #' Establish database connection
 #'
+#' Establishes a connection with the WDFW Postgres database using local configuration and user credentials.
+#'
 #' requires a local config file that is on gitignore list
 #' Dev note: we could add template config file to the inst/ folder, and then add
 #' a function that sets up the config file.
@@ -7,7 +9,7 @@
 #' @param max_attempts Numeric. Number of attempts to make when attempting to establish connection. Defaults to 5.
 #' @param delay_seconds Numeric. Number of seconds to wait between attempt. Defaults to 3.
 #'
-#' @return Connection to database.
+#' @return Connection to WDFW PostgreSQL database.
 #' @export
 #'
 establish_db_con<- function(max_attempts = 5, delay_seconds = 3) {

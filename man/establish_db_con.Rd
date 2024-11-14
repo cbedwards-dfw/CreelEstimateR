@@ -12,9 +12,12 @@ establish_db_con(max_attempts = 5, delay_seconds = 3)
 \item{delay_seconds}{Numeric. Number of seconds to wait between attempt. Defaults to 3.}
 }
 \value{
-Connection to database.
+Connection to WDFW PostgreSQL database.
 }
 \description{
+Establishes a connection with the WDFW Postgres database using local configuration and user credentials.
+}
+\details{
 requires a local config file that is on gitignore list
 Dev note: we could add template config file to the inst/ folder, and then add
 a function that sets up the config file.
