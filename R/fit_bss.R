@@ -1,4 +1,7 @@
-#' Wrapper on `stan()`
+#' Fits data to rstan model
+#'
+#' Wraps the rstan::stan() function, passing in the data list and various arguments controlling the MCMC process
+#' (e.g., number of chains, iterations, etc.)
 #'
 #' Dev note: we don't want our default arguments to be based on global variables.
 #'

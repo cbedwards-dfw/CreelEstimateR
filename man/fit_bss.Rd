@@ -2,7 +2,7 @@
 % Please edit documentation in R/fit_bss.R
 \name{fit_bss}
 \alias{fit_bss}
-\title{Wrapper on \code{stan()}}
+\title{Fits data to rstan model}
 \usage{
 fit_bss(
   model_file_name = here::here("stan_models/BSS_creel_model_02_2024-04-03.stan"),
@@ -45,5 +45,9 @@ fit_bss(
 Results of stan run
 }
 \description{
+Wraps the rstan::stan() function, passing in the data list and various arguments controlling the MCMC process
+(e.g., number of chains, iterations, etc.)
+}
+\details{
 Dev note: we don't want our default arguments to be based on global variables.
 }
