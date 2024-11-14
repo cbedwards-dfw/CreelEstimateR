@@ -9,7 +9,8 @@ prep_dwg_effort_census(
   study_design,
   boat_type_collapse = NA,
   fish_location_determines_type = NA,
-  angler_type_kayak_pontoon = NA
+  angler_type_kayak_pontoon = NA,
+  params
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ prep_dwg_effort_census(
 \item{fish_location_determines_type}{string passed from params that controls whether the observed fishing location for a given angler group during an effort count determines their angler type.}
 
 \item{angler_type_kayak_pontoon}{string passed from params that controls whether a boat designated as a kayak, pontoon, or kick during an effort count or angler group interview should be designated as a boat or bank angler.}
+
+\item{params}{??}
 }
 \value{
 ??

@@ -5,6 +5,7 @@
 #' @param boat_type_collapse string passed from params that controls whether all (potential) boat types (e.g., motor_boat, drift_boat) are collapsed (i.e., boat_type_collapse: "Yes") into a single boat type or kept separate (boat_type_collapse: "No").
 #' @param fish_location_determines_type string passed from params that controls whether the observed fishing location for a given angler group during an effort count determines their angler type.
 #' @param angler_type_kayak_pontoon string passed from params that controls whether a boat designated as a kayak, pontoon, or kick during an effort count or angler group interview should be designated as a boat or bank angler.
+#' @param params ??
 #'
 #' @return ??
 #' @export
@@ -14,7 +15,8 @@ prep_dwg_effort_census <- function(
     study_design,
     boat_type_collapse = NA,
     fish_location_determines_type = NA,
-    angler_type_kayak_pontoon = NA
+    angler_type_kayak_pontoon = NA,
+    params
 ){
 
   eff_cen <- dplyr::filter(eff, .data$tie_in_indicator == 1) #Filter for effort census (aka tie-in) data
