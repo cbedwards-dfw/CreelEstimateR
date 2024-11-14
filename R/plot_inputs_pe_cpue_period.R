@@ -5,6 +5,7 @@
 #'
 #' aggregating over day_type to simplify plot
 #'
+#' @param dwg ??
 #' @param days ??
 #' @param dwg_summarized ??
 #' @param daily_cpue_catch_est ??
@@ -15,13 +16,13 @@
 #' @export
 #'
 plot_inputs_pe_cpue_period <- function(
-    days, #tibble with time strata and closure fields
+    dwg,
+    days,
     dwg_summarized, #list with shared interview, index and census tibbles
     daily_cpue_catch_est,
     est_catch_group,
     period_pe
 ){
-
   cpue_period <-
     dplyr::left_join(
       dwg_summarized$interview,

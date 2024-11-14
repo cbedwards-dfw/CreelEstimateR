@@ -5,6 +5,7 @@
 \title{Plot cpue by period, section_num, angler_final, and catch group}
 \usage{
 plot_inputs_pe_cpue_period(
+  dwg,
   days,
   dwg_summarized,
   daily_cpue_catch_est,
@@ -13,6 +14,8 @@ plot_inputs_pe_cpue_period(
 )
 }
 \arguments{
+\item{dwg}{??}
+
 \item{days}{??}
 
 \item{dwg_summarized}{??}
