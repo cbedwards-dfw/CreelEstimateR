@@ -2,11 +2,12 @@
 #'
 #' @param bss_fit ??
 #' @param ecg ??
+#' @param dwg description
 #'
 #' @return ??
 #' @export
 #'
-get_bss_cpue_daily <- function(bss_fit, ecg){
+get_bss_cpue_daily <- function(bss_fit, ecg, dwg){
   bss_fit |>
     summary(pars = c("lambda_C_S")) |>
     purrr::pluck("summary") |> #only want the combined-chains version
