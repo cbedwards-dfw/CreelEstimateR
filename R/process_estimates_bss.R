@@ -79,11 +79,11 @@ process_estimates_bss <- function(params,
   #prep for database export by removing '%' symbols from BSS outputs
   all_data_summ <- all_data_summ |>
     dplyr::rename(
-      "2.5_pct" = `2.5%`,
-      "25_pct" = `25%`,
-      "50_pct" = `50%`,
-      "75_pct" = `75%`,
-      "97.5_pct" = `97.5%`
+      "2.5_pct" = .data$`2.5%`,
+      "25_pct" = .data$`25%`,
+      "50_pct" = .data$`50%`,
+      "75_pct" = .data$`75%`,
+      "97.5_pct" = .data$`97.5%`
     )
 
   #transform into standardized table format
