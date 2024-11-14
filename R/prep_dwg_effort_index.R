@@ -7,6 +7,7 @@
 #' @param boat_type_collapse string passed from params that controls whether all (potential) boat types (e.g., motor_boat, drift_boat) are collapsed (i.e., boat_type_collapse: "Yes") into a single boat type or kept separate (boat_type_collapse: "No").
 #' @param fish_location_determines_type string passed from params that controls whether the observed fishing location for a given angler group during an effort count determines their angler type.
 #' @param angler_type_kayak_pontoon  string passed from params that controls whether a boat designated as a kayak, pontoon, or kick during an effort count or angler group interview should be designated as a boat or bank angler.
+#' @param params ??
 #'
 #' @return ?
 #' @export
@@ -16,7 +17,8 @@ prep_dwg_effort_index <- function(
     study_design,
     boat_type_collapse = NA,
     fish_location_determines_type = NA,
-    angler_type_kayak_pontoon = NA){
+    angler_type_kayak_pontoon = NA,
+    params){
 
   #create intermediate object index_angler_groups that converts count_type objects to angler_final
   if(stringr::str_detect(study_design, "tandard" )){
