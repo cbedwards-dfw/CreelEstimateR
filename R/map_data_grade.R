@@ -32,7 +32,5 @@ map_data_grade <- function(params, transformed_bss_data=NULL, transformed_pe_dat
   }
 
   #return both objects
-  assign("transformed_bss_data", transformed_bss_data, envir = .GlobalEnv)
-  assign("transformed_pe_data", transformed_pe_data, envir = .GlobalEnv)
   return(list(transformed_bss_data, transformed_pe_data))
 }
