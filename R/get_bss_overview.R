@@ -9,7 +9,7 @@
 get_bss_overview <- function(bss_fit, ecg){
   bss_fit |>
     summary(pars = c("E_sum", "C_sum")) |>
-    purr::pluck("summary") |>
+    purrr::pluck("summary") |>
     as.data.frame() |>
     tibble::rownames_to_column("estimate") |>
     tibble::as_tibble() |>

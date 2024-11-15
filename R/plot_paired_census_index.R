@@ -111,7 +111,7 @@ plot_paired_census_index <- function(
           values_from = "count"
         ) |>
         dplyr::mutate(
-          count_index = tidyr::if_else(.data$count_index < 0 , 0, .data$count_index)
+          count_index = dplyr::if_else(.data$count_index < 0 , 0, .data$count_index)
           # need derived negative count_index estimates of bank anglers to pass through subsequent filter,
           # if count_index doesn't pass filter then TI_expan is NA. Should only be an issue in very data limited situations
           # if not addressed, then effort from index counts with no TI_expan value get dropped from final estimates

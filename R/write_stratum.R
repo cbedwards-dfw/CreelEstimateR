@@ -1,3 +1,10 @@
+#' Write stratum
+#'
+#' @param con ??
+#' @param creel_estimates_db ??
+#'
+#' @export
+#'
 write_stratum <- function(con, creel_estimates_db) {
   DBI::dbWriteTable(
     conn = con,

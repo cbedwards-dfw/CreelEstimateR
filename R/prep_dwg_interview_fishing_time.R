@@ -19,7 +19,7 @@ prep_dwg_interview_fishing_time <- function(
     person_count_type
 ){
 
-  if(string::str_detect(study_design, "tandard" ) | study_design == "Drano"){ # If Study design in the YAML is specified as [S]tandard or Drano proceed with running this function...
+  if(stringr::str_detect(study_design, "tandard" ) | study_design == "Drano"){ # If Study design in the YAML is specified as [S]tandard or Drano proceed with running this function...
 
     # Define person_count_final based on study_design and, if needed, user designated person_count_type
     if (stringr::str_detect(study_design, "tandard" )) {

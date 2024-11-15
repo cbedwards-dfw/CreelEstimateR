@@ -1,3 +1,11 @@
+#' Write look-up table
+#'
+#' @param con ??
+#' @param analysis_lut ??
+#' @param max_retries maximum number of times to try to write; numeric, defaults to 5.
+#'
+#' @export
+#'
 write_lut <- function(con, analysis_lut, max_retries = 5) {
 
   #define function to check for NOT NULL constraints in analysis_lut

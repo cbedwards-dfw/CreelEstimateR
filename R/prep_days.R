@@ -67,7 +67,7 @@ prep_days <- function(
 
     day_length_values <-
       tibble::tibble(
-        sunset::getSunlightTimes(
+        suncalc::getSunlightTimes(
           keep=c("sunrise", "sunset"),
           date=days$event_date,
           lat = lat,
