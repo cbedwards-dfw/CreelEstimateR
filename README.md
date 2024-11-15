@@ -25,5 +25,5 @@ Or with the `pak` package
 
 ``` r
 # install.packages("pak")
-pak::pak("cbedwards-dfw/CreelEstimateR")
+pak::pkg_install("cbedwards-dfw/CreelEstimateR")
 ```
