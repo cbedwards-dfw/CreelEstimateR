@@ -1,0 +1,8 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles: {}
+last_built: 2024-12-31T19:20Z
+urls:
+  reference: https://cbedwards-dfw.github.io/CreelEstimateR/reference
+  article: https://cbedwards-dfw.github.io/CreelEstimateR/articles
