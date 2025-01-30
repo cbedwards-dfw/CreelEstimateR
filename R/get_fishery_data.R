@@ -18,12 +18,18 @@
 #' }
 get_fishery_data <- function(fishery_name, years) {
   fisheries <- as.character(interaction(fishery_name, years, sep = " "))
+  ## in current formating of fishery_name variable in database will need an option to also specify the full name of fisheries
+  ## current approach doesn't work with pattern of using a "return year", e.g., Hoh winter steelhead 2024-25
 
   # fisheries <- c("Skagit fall salmon 2021", "Skagit fall salmon 2022", "Skagit fall salmon 2023", "Skagit fall salmon 2024")
 
   # download the data from data.wa.gov
   all_data <- rlang::set_names(fisheries) |>
-    purrr::map(~ fetch_dwg(fishery_name = .x))
+    purrr::map(~ fetch_dwg(fishery_name = .x)) |>
+    purrr::map(~keep(.x, ~nrow(.x) > 0)) |>  # this and line below clean out empty lists for fishery-year combos that do not exist in the database; Keep non-empty dataframes
+    purrr::keep(~length(.x) > 0) #Keep lists with at least one non-empty dataframe
+
+  # potential enhancement - print out the years for which there were no records?
 
   # select and bind the interview data
   # functionalize this
@@ -37,9 +43,8 @@ get_fishery_data <- function(fishery_name, years) {
       month = lubridate::month(.data$event_date),
       year = lubridate::year(.data$event_date),
       week = lubridate::week(.data$event_date),
-      fishing_location = dplyr::if_else(is.na(.data$fishing_location), .data$interview_location, .data$fishing_location)
+      fishing_location = dplyr::if_else(is.na(.data$fishing_location), .data$interview_location, .data$fishing_location) # issue when field for interview location varies across for a fishery
     )
-
 
   # interview <- all_data |>
   #   map(~keep(.x, names(.x) |>  str_detect("interview"))) |>
@@ -50,7 +55,6 @@ get_fishery_data <- function(fishery_name, years) {
   #     week = lubridate::week(event_date),
   #     fishing_location = if_else(is.na(fishing_location), interview_location, fishing_location))
   # )
-
 
 
   # select and bind the catch data
@@ -67,8 +71,24 @@ get_fishery_data <- function(fishery_name, years) {
     dplyr::mutate(
       month = lubridate::month(.data$event_date),
       year = lubridate::year(.data$event_date),
-      week = lubridate::week(.data$event_date)
+      week = lubridate::week(.data$event_date))
+
+  # fishery_location lookup tables, contain the sites and sections used for a fishery
+  locations <- all_data |>
+     purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("fishery_manager"))) |> # Filter for "catch" named objects
+     purrr::map_dfr(dplyr::bind_rows)
+
+  # longitude/latitude lookup tables, contain approximate XY coordinates for waterbodies within a fishery
+  ll <- all_data |>
+    purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("ll"))) |> # Filter for "catch" named objects
+    purrr::map_dfr(dplyr::bind_rows)
+
+  # fishery_location lookup tables, contain the sites and sections used for a fishery
+  closures <- all_data |>
+    purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("closures"))) |> # Filter for "catch" named objects
+    purrr::map_dfr(dplyr::bind_rows)
+
     )
 
-  return(list(interview = interview, catch = catch, effort = effort))
+  return(list(interview = interview, catch = catch, effort = effort, locations = locations, ll = ll, closures, = closures))
 }
