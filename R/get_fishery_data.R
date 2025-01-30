@@ -6,7 +6,7 @@
 #' @param fishery_name Character string of fishery name. If a vector of character strings is provided instead, will use all combinations of fishery_name by years.
 #' @param years Integer or vector of integers identifying years of data to pull
 #'
-#' @return List with three dataframes: `$interview`, `$catch`, and `$effort`
+#' @return List with three dataframes: `$interview`, `$catch`, `$effort`, `$locations`, `$ll`, `$closures`
 #' @export
 #'
 #' @examples
