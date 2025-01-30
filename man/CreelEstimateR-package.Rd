@@ -12,6 +12,7 @@ What the package does (one paragraph).
 Useful links:
 \itemize{
   \item \url{https://github.com/cbedwards-dfw/CreelEstimateR}
+  \item \url{https://cbedwards-dfw.github.io/CreelEstimateR/}
   \item Report bugs at \url{https://github.com/cbedwards-dfw/CreelEstimateR/issues}
 }
 
