@@ -37,7 +37,7 @@ get_fishery_data <- function(fishery_name, years) {
 
   interview <- all_data |>
     purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("interview"))) |> # Filter for "interview" named objects
-    # map(~map(.x, ~mutate(.x, zip_code = as.numeric(zip_code)))) |> # issue binding zip code due to data mismatch, likely when zipcode is.na across an entire fishery dataset
+    map(~map(.x, ~mutate(.x, zip_code = as.numeric(zip_code)))) |> # issue binding zip code due to data mismatch, likely when zipcode is.na across an entire fishery dataset
     purrr::map_dfr(dplyr::bind_rows) |>
     dplyr::mutate(
       month = lubridate::month(.data$event_date),
