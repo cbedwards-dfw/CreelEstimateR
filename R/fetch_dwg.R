@@ -10,6 +10,8 @@
 #' @export
 #'
 fetch_dwg <- function(fishery_name){
+  fishery_options = fetch_fishery_names()
+  rlang::arg_match(fishery_name, fishery_options)
 
   dwg_base <- list(
     #event = "https://data.wa.gov/resource/ui95-axtn.csv",

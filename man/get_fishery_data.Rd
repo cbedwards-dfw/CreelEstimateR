@@ -4,15 +4,15 @@
 \alias{get_fishery_data}
 \title{Obtain and format interview, catch, and effort data for sets of fishery-years}
 \usage{
-get_fishery_data(fishery_name, years)
+get_fishery_data(fishery_names, years = NULL)
 }
 \arguments{
-\item{fishery_name}{Character string of fishery name. If a vector of character strings is provided instead, will use all combinations of fishery_name by years.}
+\item{fishery_names}{Character string of fishery name or vector of character strings. If \code{years} is provided, \code{fishery_names} is combined with \code{year} to create fishery names (see example). If \code{years} is not provided, uses this character string or vector of character strings as the exact fishery names. Try \code{search_fishery_name()} to see available options.}
 
-\item{years}{Integer or vector of integers identifying years of data to pull}
+\item{years}{Integer or vector of integers identifying years of data to pull. Optional argument, defaults to NULL.}
 }
 \value{
-List with three dataframes: \verb{$interview}, \verb{$catch}, and \verb{$effort}
+List with three dataframes: \verb{$interview}, \verb{$catch}, \verb{$effort}, \verb{$locations}, \verb{$ll}, \verb{$closures}
 }
 \description{
 Based on code written for descriptive_statistics.R in the \code{creelreview} package. Streamlines
@@ -21,8 +21,12 @@ the process of getting creel data in useful format.
 \examples{
 \dontrun{
 temp <- get_fishery_data(
-  fishery = "Nisqually salmon",
-  year = 2021:2023
-)
+  fishery_names = "Nisqually salmon",
+  years = 2021:2023)
+  ## exact definition
+  temp <- get_fishery_data(
+  fishery_names = c("Skagit fall salmon 2021", "Skagit summer gamefish 2022"))
+  ## Using the search_fishery_name() function to choose fisheries
+  temp = get_fishery_data(fishery_names = search_fishery_name("cascade winter"))
 }
 }
