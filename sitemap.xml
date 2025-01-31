@@ -11,6 +11,7 @@
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/export_estimates.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/fetch_db_table.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/fetch_dwg.html</loc></url>
+<url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/fetch_fishery_names.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/fit_bss.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/generate_analysis_lut.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/get_bss_catch_daily.html</loc></url>
@@ -43,6 +44,7 @@
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/prep_inputs_pe_paired_census_index_counts.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/process_estimates_bss.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/process_estimates_pe.html</loc></url>
+<url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/search_fishery_name.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/transform_estimates.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/write_lut.html</loc></url>
 <url><loc>https://cbedwards-dfw.github.io/CreelEstimateR/reference/write_stratum.html</loc></url>
