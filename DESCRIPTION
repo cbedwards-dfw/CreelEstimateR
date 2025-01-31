@@ -17,6 +17,7 @@ Imports:
     dbplyr,
     dplyr,
     ggplot2,
+    glue,
     here,
     jsonlite,
     lubridate,
