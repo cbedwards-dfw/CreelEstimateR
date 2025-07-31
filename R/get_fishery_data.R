@@ -88,6 +88,10 @@ get_fishery_data <- function(fishery_names, years = NULL) {
     purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("fishery_manager"))) |> # Filter for "catch" named objects
     purrr::map_dfr(dplyr::bind_rows)
 
+  gear <- all_data |>
+    purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("gear"))) |> # Filter for "catch" named objects
+    purrr::map_dfr(dplyr::bind_rows)
+
   # longitude/latitude lookup tables, contain approximate XY coordinates for waterbodies within a fishery
   ll <- all_data |>
     purrr::map(~ purrr::keep(.x, names(.x) |> stringr::str_detect("ll"))) |> # Filter for "catch" named objects
@@ -100,5 +104,6 @@ get_fishery_data <- function(fishery_names, years = NULL) {
 
   #)
 
-  return(list(interview = interview, catch = catch, effort = effort, locations = locations, ll = ll, closures = closures))
+  return(list(interview = interview, catch = catch, effort = effort, locations = locations, gear = gear,
+              ll = ll, closures = closures))
 }

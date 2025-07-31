@@ -20,7 +20,7 @@ fetch_dwg <- function(fishery_name){
     catch = "https://data.wa.gov/resource/6y4e-8ftk.csv",
     water_bodies = "https://data.wa.gov/resource/nbd2-vdmz.csv",
     closures = "https://data.wa.gov/resource/6zm6-iep6.csv",
-    gear = "https://data.wa.gov/resource/d2ks-afhz.csv", #currently unused?
+    gear = "https://data.wa.gov/resource/d2ks-afhz.csv",
     fishery_manager = "https://data.wa.gov/resource/vkjc-s5u8.csv"
   )
 
@@ -79,6 +79,15 @@ fetch_dwg <- function(fishery_name){
     utils::URLencode() |>
     readr::read_csv(show_col_types = F) |>
     dplyr::select("fishery_name", "section_num", "event_date")
+
+  dwg$gear <- paste0(
+    dwg_base$gear,
+    "?$where=fishery_name='",
+    fishery_name,
+    "'&$limit=100000"
+  ) |>
+    utils::URLencode() |>
+    readr::read_csv(show_col_types = F)
 
   dwg$fishery_manager <- paste0(
     dwg_base$fishery_manager,
