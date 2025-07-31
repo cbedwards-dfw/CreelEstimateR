@@ -20,7 +20,7 @@ fetch_dwg <- function(fishery_name){
     catch = "https://data.wa.gov/resource/6y4e-8ftk.csv",
     water_bodies = "https://data.wa.gov/resource/nbd2-vdmz.csv",
     closures = "https://data.wa.gov/resource/6zm6-iep6.csv",
-    #,gear = "https://data.wa.gov/resource/d2ks-afhz.csv" #currently unused?
+    gear = "https://data.wa.gov/resource/d2ks-afhz.csv", #currently unused?
     fishery_manager = "https://data.wa.gov/resource/vkjc-s5u8.csv"
   )
 
